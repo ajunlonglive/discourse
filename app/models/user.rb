@@ -474,7 +474,11 @@ class User < ActiveRecord::Base
       url = SiteSetting.external_system_avatars_url.dup
       url.gsub! "{color}", letter_avatar_color(username.downcase)
       url.gsub! "{username}", username
-      url.gsub! "{first_letter}", username[0].downcase
+      if usename[0] =~ /[^A-Za-z0-9_]/
+        url.gsub! "{first_letter}", rand(36).to_s(36)
+      else
+        url.gsub! "{first_letter}", username[0].downcase
+      end
       url
     else
       "#{Discourse.base_uri}/letter_avatar/#{username.downcase}/{size}/#{LetterAvatar.version}.png"
