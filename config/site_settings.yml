@@ -576,8 +576,8 @@ files:
     default: '20|25|32|45|60|120'
     type: list
   external_system_avatars_enabled:
-    default: true
-    client: true
+    default: false
+    client: false
     shadowed_by_global: true
   external_system_avatars_url:
     default: "https://avatars.discourse.org/letter/{first_letter}/{color}/{size}.png"

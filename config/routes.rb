@@ -7,7 +7,8 @@ require_dependency "permalink_constraint"
 
 # This used to be User#username_format, but that causes a preload of the User object
 # and makes Guard not work properly.
-USERNAME_ROUTE_FORMAT = /[A-Za-z0-9\_.\-\%]+/ unless defined? USERNAME_ROUTE_FORMAT
+
+USERNAME_ROUTE_FORMAT = /[A-Za-z0-9\_.\-\%\u4e00-\u9fa5]+/ unless defined? USERNAME_ROUTE_FORMAT
 
 BACKUP_ROUTE_FORMAT = /[a-zA-Z0-9\-_]*\d{4}(-\d{2}){2}-\d{6}\.(tar\.gz|t?gz)/i unless defined? BACKUP_ROUTE_FORMAT
 

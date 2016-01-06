@@ -17,7 +17,11 @@ class LetterAvatar
         identity.color = LetterAvatar::COLORS[
           Digest::MD5.hexdigest(username)[0...15].to_i(16) % LetterAvatar::COLORS.length
         ]
-        identity.letter = username[0].upcase
+        if username =~ /[^A-Za-z0-9_]+/
+          identity.letter = Pinyin.t(username).to_s[0].upcase
+        else
+          identity.letter = username[0].upcase
+        end
         identity
       end
     end

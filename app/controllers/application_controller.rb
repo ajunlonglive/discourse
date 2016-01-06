@@ -265,7 +265,13 @@ class ApplicationController < ActionController::Base
   def fetch_user_from_params(opts=nil)
     opts ||= {}
     user = if params[:username]
-      username_lower = params[:username].downcase
+      # 如果用户名含有非英文字符
+      if params[:username] =~ /[^A-Za-z0-9_]+/
+        # Rails.logger.debug "NonAlphaNumeric Username: #{params[:username]}"
+        username_lower = params[:username]
+      else
+        username_lower = params[:username].downcase
+      end
       username_lower.gsub!(/\.json$/, '')
       find_opts = {username_lower: username_lower}
       find_opts[:active] = true unless opts[:include_inactive]

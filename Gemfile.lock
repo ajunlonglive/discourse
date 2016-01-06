@@ -389,11 +389,13 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    chinese_pinyin (1.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  chinese_pinyin
   active_model_serializers (~> 0.8.3)
   annotate
   aws-sdk
